@@ -1,0 +1,20 @@
+# ============================================================
+# Play Musik — .gitignore
+# ============================================================
+
+# --- AI agents, skills, memory (OpenCode / COMMANDER) ---
+agent/
+.agents/
+opencode.json
+
+# --- Plans and scratch notes ---
+docs/COMMANDER_PLAN/
+docs/MUSA/
+
+# --- Python cache (dag.py) ---
+__pycache__/
+*.pyc
+
+# --- OS junk ---
+Thumbs.db
+.DS_Store

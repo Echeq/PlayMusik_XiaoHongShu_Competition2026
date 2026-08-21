@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#87CEEB">
+  <meta name="description" content="Play Musik — an Incredibox-style beat maker. Click characters to mix loops. 100% offline, all sounds synthesized in your browser.">
+  <title>Play Musik — make a beat, 100% offline</title>
+  <!-- Local SVG favicon — bundled with the app, zero network -->
+  <link rel="icon" href="src/image/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="src/css/styles.css">
+</head>
+<body>
+
+  <header class="app-header">
+    <div class="logo">
+      <img src="src/image/logo.gif" alt="Play Musik" width="378" height="57">
+    </div>
+  </header>
+
+  <main class="stage">
+    <div class="kit-bar-wrap">
+      <!-- Kit selector pills, built by src/js/main.js from src/js/data.js -->
+      <div id="kit-bar" class="kit-bar" role="tablist" aria-label="Sound kits" data-i18n-aria="aria.kits"></div>
+
+      <!-- Home panel — drops down below the kit bar when the Home pill is active -->
+      <section id="home-panel" class="home-panel" hidden>
+        <h2>Play Musik</h2>
+        <p class="home-intro"><strong data-i18n="home.intro1">I made this so I could make music without learning how to compose.</strong><span data-i18n="home.intro2">I don't play instruments. I don't know music theory. But I love creating.</span></p>
+
+        <div class="home-story">
+          <div class="home-block">
+            <h3 data-i18n="home.inspiration">The inspiration</h3>
+            <p><strong>Habbo Hotel</strong> — <span data-i18n="home.habbo">I grew up on it. What hooked me was the WIRED furniture. It's visual programming — connect blocks, things move. It taught me logic without me realizing it.</span></p>
+            <p><strong>Incredibox</strong> — <span data-i18n="home.incredibox">I loved it as a kid. Always wondered how it worked under the hood.</span></p>
+          </div>
+
+          <hr class="home-divider">
+
+          <div class="home-block">
+            <h3 data-i18n="home.how">How it happened</h3>
+            <p data-i18n="home.how1">I saw the vibecoding competition on Xiaohongshu. Rules: 100% offline, pure HTML/CSS/JS. I thought: "I have an idea. Let me actually build it."</p>
+            <p data-i18n="home.how2">So I built my own version of Incredibox. With synthetic sounds. Offline.</p>
+          </div>
+
+          <hr class="home-divider">
+
+          <div class="home-block">
+            <h3 data-i18n="home.problem">The problem</h3>
+            <p data-i18n="home.problem1">I tried recording my own sounds. Failed. Zero musical training.</p>
+            <p data-i18n="home.problem2">So I used the Web Audio API to synthesize everything — kick drums, snares, melodies, all with code. No audio files. No samples. It worked.</p>
+          </div>
+
+          <hr class="home-divider">
+
+          <div class="home-quote">
+            <p data-i18n="home.quote1">7 kits. 79 sounds. All offline.</p>
+            <p data-i18n="home.quote2">Click a character. They make a sound. The sound loops. You build a beat.</p>
+            <p data-i18n="home.quote3">No account. No ads. No internet. Just pixels and music.</p>
+          </div>
+
+          <hr class="home-divider">
+
+          <div class="home-block">
+            <h3 data-i18n="home.share">Why share it?</h3>
+            <p data-i18n="home.share1">Xiaohongshu gave me a reason to finish. And creativity shouldn't require Wi-Fi.</p>
+            <p class="home-sign" data-i18n="home.sign">— Built on nights and weekends. Just code.</p>
+          </div>
+        </div>
+
+        <div class="home-signature">
+          <p class="home-sign" data-i18n="home.author">Made by ELVIS ENRIQUE CHEN QIU — Panama</p>
+          <p class="home-license" data-i18n="home.license">Open source under the MIT License</p>
+        </div>
+
+        <button id="home-start" type="button" class="home-start" data-i18n="home.start">Start Making Music</button>
+      </section>
+    </div>
+
+    <!-- 4x3 character grid, built by src/js/main.js from src/js/data.js -->
+    <div id="grid" class="grid" role="group" aria-label="Characters" data-i18n-aria="aria.characters"></div>
+  </main>
+
+  <footer class="transport">
+    <div class="transport-inner">
+      <button id="play-btn" type="button" class="play-btn" aria-label="Play" data-i18n-title="play">
+        <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+        <svg class="icon-stop" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>
+        <span class="play-label" data-i18n="play">Play</span>
+      </button>
+
+      <div class="bpm-control">
+        <label for="bpm-slider" data-i18n="bpm">BPM</label>
+        <input type="range" id="bpm-slider" min="60" max="180" step="1" value="100" aria-label="Tempo in beats per minute" data-i18n-aria="bpm.aria">
+        <output id="bpm-value" for="bpm-slider">100</output>
+      </div>
+
+      <div class="time-sig" role="group" aria-label="Time signature">
+        <button type="button" data-sig="2/4" data-i18n-title="timeSig" title="Time signature">2/4</button>
+        <button type="button" data-sig="3/4" data-i18n-title="timeSig" title="Time signature">3/4</button>
+        <button type="button" class="active" data-sig="4/4" data-i18n-title="timeSig" title="Time signature" aria-pressed="true">4/4</button>
+      </div>
+
+      <div class="action-buttons">
+        <button id="random-btn" type="button" class="action-btn" data-i18n="random" data-i18n-title="random.title" title="Random mix — activate a random set of characters">Random</button>
+      </div>
+
+      <button id="settings-btn" type="button" class="action-btn" data-i18n="settings" data-i18n-title="settings" title="Settings">Settings</button>
+
+      <!-- Home-only transport buttons: shown only on the Home landing screen
+           (the Settings button is hidden there). -->
+      <button id="credits-btn" type="button" class="action-btn home-only" data-i18n="credits" data-i18n-title="credits" title="Credits">Credits</button>
+      <button id="lang-btn" type="button" class="action-btn home-only" data-i18n-title="changeLanguage" title="Change language">Languages</button>
+    </div>
+
+    <div id="step-indicator" class="step-indicator" aria-hidden="true"></div>
+  </footer>
+
+  <!-- Settings modal — MUST be before the scripts: main.js grabs these refs
+       synchronously at IIFE time, so the modal must already be parsed. -->
+  <div id="settings-modal" class="modal-overlay" hidden>
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="settings-title">
+      <div class="modal-header">
+        <h2 id="settings-title" class="modal-title" data-i18n="settings">Settings</h2>
+        <button id="settings-close" type="button" class="modal-close" data-i18n="close">Close</button>
+      </div>
+
+      <div class="modal-body">
+        <div id="settings-menu" class="modal-menu">
+          <button id="credits-entry" type="button" class="modal-entry" data-i18n="credits">Credits</button>
+          <button id="language-entry" type="button" class="modal-entry" data-i18n="changeLanguage">Change language</button>
+        </div>
+
+        <div id="credits-panel" class="modal-subpanel" hidden>
+          <h3 class="modal-subtitle" data-i18n="credits.title">Credits</h3>
+          <p class="modal-text" data-i18n="credits.body">Play Musik is a fully offline beat-making app. All sounds are synthesized live in your browser.</p>
+          <p class="modal-text"><span data-i18n="credits.linkedin">LinkedIn:</span> <a href="https://linkedin.com/in/Echeq" target="_blank" rel="noopener">linkedin.com/in/Echeq</a></p>
+          <p class="modal-text"><span data-i18n="credits.github">GitHub:</span> <a href="https://github.com/Echeq" target="_blank" rel="noopener">github.com/Echeq</a></p>
+          <p class="modal-text" data-i18n="credits.date">Delivery date: September 7, 2026</p>
+          <p class="modal-text" data-i18n="credits.author">Author: ELVIS ENRIQUE CHEN QIU — Panama</p>
+          <p class="modal-text" data-i18n="credits.license">Licensed under the MIT License — free to use, modify and share.</p>
+          <button id="credits-back" type="button" class="modal-entry back" data-i18n="back">Back</button>
+        </div>
+
+        <div id="language-panel" class="modal-subpanel" hidden>
+          <h3 class="modal-subtitle" data-i18n="language">Language</h3>
+          <div class="lang-buttons">
+            <button type="button" class="modal-entry lang-btn" data-lang="zh" data-i18n="lang.zh">中文</button>
+            <button type="button" class="modal-entry lang-btn" data-lang="en" data-i18n="lang.en">English</button>
+            <button type="button" class="modal-entry lang-btn" data-lang="es" data-i18n="lang.es">Español</button>
+          </div>
+          <button id="language-back" type="button" class="modal-entry back" data-i18n="back">Back</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="src/js/data.js"></script>
+  <script src="src/js/audio-engine.js"></script>
+  <script src="src/js/i18n.js"></script>
+  <script src="src/js/main.js"></script>
+</body>
+</html>
