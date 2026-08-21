@@ -1,9 +1,9 @@
+
+
+# Play Musik 🎵
 <p align="center">
   <img src="src/image/favicon.svg" alt="Play Musik" width="96" height="96">
 </p>
-
-# Play Musik 🎵
-
 An **Incredibox-style** beat maker built with pure HTML, CSS, and vanilla JavaScript. Click characters to activate loops and mix a beat. **100% offline** — every sound is synthesized in your browser with the Web Audio API, with zero internet connection.
 
 ## Features
