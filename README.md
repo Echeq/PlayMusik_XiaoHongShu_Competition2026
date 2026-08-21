@@ -1,102 +1,106 @@
+<p align="center">
+  <img src="src/image/favicon.svg" alt="Play Musik" width="96" height="96">
+</p>
+
 # Play Musik 🎵
 
-Un beat-maker estilo **Incredibox** construido con HTML, CSS y JavaScript puro. Haz click en los personajes para activar loops y mezclar un beat. **100% offline** — todos los sonidos se sintetizan en tu navegador con la Web Audio API, sin ninguna conexión a internet.
+An **Incredibox-style** beat maker built with pure HTML, CSS, and vanilla JavaScript. Click characters to activate loops and mix a beat. **100% offline** — every sound is synthesized in your browser with the Web Audio API, with zero internet connection.
 
-## Características
+## Features
 
-### Kits (11 kits, 125 personajes)
+### Kits (11 kits, 125 characters)
 
-- **Origin** (12): el equipo clásico — Kick, Snare, Hi-Hat / Scratch, Boom, Zap / Bass, Lead, Arp / Chant, Beatbox, Ooh.
-- **Neon** (12): la crew eléctrica — Toms, Clap, Shaker / Air Horn, Vinyl Scratch, Riser / Piano, Pluck, Chiptune / Hey, Yeah, Whistle.
-- **World** (8): percusión orgánica y voces — Congas, Cowbell, Tambourine / Djembe, Rainstick / Pan Flute / Choir, Opera.
-- **Circuit** (11): toolkit electrónico — 808 Sub, Crash, Rimshot / Drum Glitch, Filter Sweep, Sidechain / Synth Pad, Music Box, Wobble Bass, Strings / Talkbox.
-- **Jazz** (12): la crew nocturna — Ride, Brushes, Kick / Rim, Splash, Wah / Walking Bass, Comp, Sax / Scat, Hum, Bop.
-- **RNB** (12): grooves suaves — Kick, Snare, Hi-Hat / Rim, Shaker, Crackle / Rhodes, Smooth Bass, Guitar / Soul, Adlib, Ooh.
-- **Salsa** (12): la crew latina — Congas, Timbales, Bongo, Clave / Güiro, Maracas, Campana / Montuno, Tumbao, Brass / Coro, Soneo.
-- **BOSSA NOVA** (12): calidez acústica brasileña — Kick, Brush, Shaker, Tamborim / Guitarra, Pandeiro, Agogô / Piano, Sax, Bajo / Voz, Coro.
-- **KPOP** (12): producción brillante — Kick, Snare, Hi-Hat, Clap / Riser, Drop, FX / Synth Lead, Piano, Bass / Vocal, Chant.
-- **TRAP** (11): 808 oscuro y pesado — 808, Snare, Hi-Hat, Clap / Roll, Riser, FX / Synth, Piano, Bass / Adlibs.
-- **LOFI** (11): nostalgia polvorienta — Kick, Snare, Hi-Hat, Vinyl / Rain, Tape, Pop / Piano, Guitarra, Bass / Vocal.
+- **Origin** (12): the classic crew — Kick, Snare, Hi-Hat / Scratch, Boom, Zap / Bass, Lead, Arp / Chant, Beatbox, Ooh.
+- **Neon** (12): the electric crew — Toms, Clap, Shaker / Air Horn, Vinyl Scratch, Riser / Piano, Pluck, Chiptune / Hey, Yeah, Whistle.
+- **World** (8): organic percussion and voices — Congas, Cowbell, Tambourine / Djembe, Rainstick / Pan Flute / Choir, Opera.
+- **Circuit** (11): electronic toolkit — 808 Sub, Crash, Rimshot / Drum Glitch, Filter Sweep, Sidechain / Synth Pad, Music Box, Wobble Bass, Strings / Talkbox.
+- **Jazz** (12): the smoky late-night crew — Ride, Brushes, Kick / Rim, Splash, Wah / Walking Bass, Comp, Sax / Scat, Hum, Bop.
+- **RNB** (12): smooth grooves — Kick, Snare, Hi-Hat / Rim, Shaker, Crackle / Rhodes, Smooth Bass, Guitar / Soul, Adlib, Ooh.
+- **Salsa** (12): the fiery Latin crew — Congas, Timbales, Bongo, Clave / Güiro, Maracas, Campana / Montuno, Tumbao, Brass / Coro, Soneo.
+- **BOSSA NOVA** (12): Brazilian acoustic warmth — Kick, Brush, Shaker, Tamborim / Guitar, Pandeiro, Agogô / Piano, Sax, Bass / Voice, Choir.
+- **KPOP** (12): bright production — Kick, Snare, Hi-Hat, Clap / Riser, Drop, FX / Synth Lead, Piano, Bass / Vocal, Chant.
+- **TRAP** (11): dark heavy 808 — 808, Snare, Hi-Hat, Clap / Roll, Riser, FX / Synth, Piano, Bass / Adlibs.
+- **LOFI** (11): dusty nostalgia — Kick, Snare, Hi-Hat, Vinyl / Rain, Tape, Pop / Piano, Guitar, Bass / Vocal.
 
-Cada personaje tiene su **patrón rítmico** (16 pasos) y su propio **sonido sintetizado** (Web Audio API, cero archivos de audio).
+Each character has its own **rhythmic pattern** (16 steps) and its own **synthesized sound** (Web Audio API, zero audio files).
 
-### Comportamientos dinámicos
+### Dynamic behaviors
 
-- **One-shot**: Toms, Air Horn, Riser, Crash, Splash y los risers/drops de KPOP/TRAP suenan una sola vez al hacer click (nunca entran al loop).
-- **Intensidad**: mantén pulsado un personaje para disparar un acento extra (flam).
-- **Random**: activa una mezcla aleatoria de personajes.
-- **Probabilidad**: cada personaje con badge `P` puede activar su puerta aleatoria — sus notas suenan con X% de probabilidad por ciclo.
-- **Ghost Notes**: Shaker (eco de Clap) y Tambourine (eco de Congas) duplican el patrón de otro personaje con un micro-delay.
-- **Call & Response**: las melodías responden rítmicamente a los beats activos.
-- **Gold Character**: Zap, Chant, Whistle, Pan Flute, Sax, Rhodes y Brass (★) cambian su sonido según combos secretos de personajes activos.
-- **Auto-pan**: Hi-Hat, Arp, Shaker, Tambourine, Music Box y otros alternan L/R; Congas, Cowbell y Strings tienen posición fija.
+- **One-shot**: Toms, Air Horn, Riser, Crash, Splash, and the KPOP/TRAP risers & drops fire once on click (they never enter the loop).
+- **Intensity**: hold a character to fire an extra accent (flam).
+- **Random**: activates a random mix of characters.
+- **Probability**: any character with a `P` badge can enable its random gate — its notes play with an X% chance per cycle.
+- **Ghost Notes**: Shaker (echo of Clap) and Tambourine (echo of Congas) duplicate another character's pattern with a micro-delay.
+- **Call & Response**: melodies answer the active beats rhythmically.
+- **Gold Character**: Zap, Chant, Whistle, Pan Flute, Sax, Rhodes, and Brass (★) change their sound based on secret combos of active characters.
+- **Auto-pan**: Hi-Hat, Arp, Shaker, Tambourine, Music Box, and others alternate L/R; Congas, Cowbell, and Strings have a fixed position.
 
-### Transporte y mezcla
+### Transport & mixing
 
-- Play/Stop, slider de **BPM** (60–180), indicador de pasos visual.
-- **Mute y volumen por fila** + master.
-- **Filter Sweep** y **Sidechain** modulan nodos globales de la cadena de audio.
-- Estado persistido en `localStorage` (personajes activos, probabilidades, auto-fill, BPM, filas).
-- Accesibilidad básica: `aria-pressed`, `aria-label`, teclado (espacio para Play/Stop).
+- Play/Stop, **BPM** slider (60–180), visual step indicator.
+- **Per-row mute and volume** + master.
+- **Filter Sweep** and **Sidechain** modulate global nodes of the audio chain.
+- State persisted in `localStorage` (active characters, probabilities, BPM, rows, time signature).
+- Basic accessibility: `aria-pressed`, `aria-label`, keyboard (spacebar for Play/Stop).
 
-## Cómo ejecutarlo
+## How to run
 
-No requiere instalación, build ni servidor. Dos opciones:
+No installation, build, or server required. Two options:
 
-1. **Directo**: abre `index.html` en el navegador (funciona desde `file://`).
-2. **Local**: sirve la carpeta con cualquier servidor estático, p. ej.:
+1. **Direct**: open `index.html` in your browser (works from `file://`).
+2. **Local**: serve the folder with any static server, e.g.:
    ```
    python -m http.server 8000
    ```
-   y abre `http://localhost:8000`.
+   and open `http://localhost:8000`.
 
-## Cómo usarlo
+## How to use
 
-1. Elige un **kit** en la barra superior (Origin / Neon / World / Circuit / Jazz / RNB / Salsa / BOSSA NOVA / KPOP / TRAP / LOFI).
-2. Haz click en un personaje para activarlo (vuelve a hacer click para silenciarlo). Los one-shot suenan al click.
-3. Pulsa **Play** (o la barra espaciadora) para que los loops suenen sincronizados.
-4. Ajusta el **BPM** para cambiar la velocidad.
-5. Usa **mute/volumen** del panel lateral de cada fila para mezclar.
-6. Prueba **Random**, los badges **P** (probabilidad) y los personajes **★** (combos secretos).
+1. Pick a **kit** from the top bar (Origin / Neon / World / Circuit / Jazz / RNB / Salsa / BOSSA NOVA / KPOP / TRAP / LOFI).
+2. Click a character to activate it (click again to mute it). One-shots sound on click.
+3. Press **Play** (or the spacebar) to hear the loops in sync.
+4. Adjust the **BPM** to change the tempo.
+5. Use the **mute/volume** panel on each row to mix.
+6. Try **Random**, the **P** badges (probability), and the **★** characters (secret combos).
 
-## Estructura del proyecto
+## Project structure
 
 ```
-index.html                Entrada de la app (logo, grid, transport, Home, modal de ajustes)
+index.html                App entry (logo, grid, transport, Home, settings modal)
 src/
-  css/styles.css          Estilos: identidad visual, grid, animaciones, Home
-  js/data.js              Config de los 11 kits y 125 personajes (nombre, fila, patrón, synth, flags)
-  js/audio-engine.js      Motor de audio: síntesis Web Audio + scheduler + FX globales
-  js/i18n.js              Traducciones zh/en/es + binder data-i18n
-  js/main.js              UI: grid, transporte, Home, modal, localStorage
-  image/                  favicon.svg, logo.gif, bg.png opcional
-  audio/                  Reservado para samples futuros (vacía)
-LICENSE                   Licencia MIT
+  css/styles.css          Styles: visual identity, grid, animations, Home
+  js/data.js              Config for the 11 kits and 125 characters (name, row, pattern, synth, flags)
+  js/audio-engine.js      Audio engine: Web Audio synthesis + scheduler + global FX
+  js/i18n.js              zh/en/es translations + data-i18n binder
+  js/main.js              UI: grid, transport, Home, modal, localStorage
+  image/                  favicon.svg, logo.gif, optional bg.png
+  audio/                  Reserved for future samples (empty)
+LICENSE                   MIT License
 ```
 
-## Cómo funciona el audio
+## How the audio works
 
-- **Un solo `AudioContext`**, creado en el primer gesto del usuario (requisito del navegador).
-- **Cadena de ganancia**: `4 ganancias de fila → master → masterFilter (BiquadFilter) → sidechainGain → compressor → destination`. El Filter Sweep modula `masterFilter`; el Sidechain modula `sidechainGain`.
-- **Scheduler con lookahead** ("A Tale of Two Clocks"): un `setInterval` de 25 ms agenda las notas ~100 ms antes de `audioContext.currentTime`, manteniendo los loops sample-accurate y sincronizados al BPM.
-- **Síntesis pura en runtime**: kick (seno con pitch drop), snare/hi-hat (ruido filtrado), bass/lead/arp (osciladores con secuencias de notas), voces (formantes + vibrato), pads (saws detunados), efectos (ruido + filtros). No hay archivos de audio.
-- **Auto-pan**: los personajes con `pan: 'alt'` enrutan su salida por un `StereoPannerNode` que alterna L/R.
+- **A single `AudioContext`**, created on the first user gesture (browser requirement).
+- **Gain chain**: `4 row gains → master → masterFilter (BiquadFilter) → sidechainGain → compressor → destination`. Filter Sweep modulates `masterFilter`; Sidechain modulates `sidechainGain`.
+- **Lookahead scheduler** ("A Tale of Two Clocks"): a 25 ms `setInterval` schedules notes ~100 ms ahead of `audioContext.currentTime`, keeping loops sample-accurate and synced to the BPM.
+- **Pure runtime synthesis**: kick (sine with pitch drop), snare/hi-hat (filtered noise), bass/lead/arp (oscillators with note sequences), voices (formants + vibrato), pads (detuned saws), effects (noise + filters). No audio files.
+- **Auto-pan**: characters with `pan: 'alt'` route their output through a `StereoPannerNode` that alternates L/R.
 
-## Garantía offline
+## Offline guarantee
 
-- Sin CDN, sin `fetch`/`XMLHttpRequest` a servidores remotos, sin fuentes ni imágenes externas.
-- Favicon e íconos 100% locales/inline; los personajes usan SVG inline.
-- Fondo opcional `src/image/bg.png` (si falta, los gradientes neon mantienen el look).
-- Verificado en modo offline de DevTools y desde `file://`.
+- No CDN, no `fetch`/`XMLHttpRequest` to remote servers, no external fonts or images.
+- Favicon and icons 100% local/inline; characters use inline SVG.
+- Optional backdrop `src/image/bg.png` (if missing, the neon gradients keep the look).
+- Verified in DevTools offline mode and from `file://`.
 
-## Persistencia
+## Persistence
 
-El estado se guarda bajo la clave `musiclike-state-v2` en `localStorage`. Borra los datos del sitio en DevTools para resetear.
+State is saved under the `musiclike-state-v2` key in `localStorage`. Clear the site data in DevTools to reset.
 
-## Licencia
+## License
 
-**Play Musik** es software de código abierto bajo la **Licencia MIT** (ver `LICENSE`).
+**Play Musik** is open-source software under the **MIT License** (see `LICENSE`).
 
-- **Autor:** ELVIS ENRIQUE CHEN QIU — Panamá
-- **Uso:** libre de usar, modificar, distribuir y compartir, con atribución.
-- **Garantía:** el software se provee "tal cual", sin garantía de ningún tipo.
+- **Author:** ELVIS ENRIQUE CHEN QIU — Panama
+- **Usage:** free to use, modify, distribute, and share, with attribution.
+- **Warranty:** the software is provided "as is", without warranty of any kind.
